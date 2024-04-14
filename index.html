@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculadora {
+            width: 300px;
+            background-color: #f046a9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            padding-top: 30px;
+        }
+
+        #display {
+            width: calc(100% - 20px);
+            height: 40px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .calculadora-teclas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        .tecla {
+            background-color: #d18aec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .tecla:hover {
+            background-color: #c95ce4;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="display" readonly>
+        <div class="calculadora-teclas">
+            <div class="tecla" onclick="addToDisplay('7')">7</div>
+            <div class="tecla" onclick="addToDisplay('8')">8</div>
+            <div class="tecla" onclick="addToDisplay('9')">9</div>
+            <div class="tecla" onclick="addToDisplay('/')">/</div>
+            <div class="tecla" onclick="addToDisplay('4')">4</div>
+            <div class="tecla" onclick="addToDisplay('5')">5</div>
+            <div class="tecla" onclick="addToDisplay('6')">6</div>
+            <div class="tecla" onclick="addToDisplay('*')">*</div>
+            <div class="tecla" onclick="addToDisplay('1')">1</div>
+            <div class="tecla" onclick="addToDisplay('2')">2</div>
+            <div class="tecla" onclick="addToDisplay('3')">3</div>
+            <div class="tecla" onclick="addToDisplay('-')">-</div>
+            <div class="tecla" onclick="addToDisplay('0')">0</div>
+            <div class="tecla" onclick="addToDisplay('.')">.</div>
+            <div class="tecla" onclick="calculate()">=</div>
+            <div class="tecla" onclick="addToDisplay('+')">+</div>
+        </div>
+        <div class="calculadora-teclas">
+            <div class="tecla" onclick="clearDisplay()">C</div>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculate() {
+            var expression = document.getElementById('display').value;
+            var result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>
